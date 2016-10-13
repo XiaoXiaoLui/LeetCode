@@ -8,6 +8,7 @@
 #include <cmath>
 #include <cstring>
 #include <queue>
+#include <ctime>
 
 using namespace std;
 
@@ -17,11 +18,28 @@ using namespace std;
 
 typedef long long ll;
 
+void genRandom(vector<int>& a, int n, int low, int high)
+{
+	srand(time(0));
+	for (int i = 0; i < n; i++)
+	{
+		a.push_back(rand() % (high - low) + low);
+	}
+}
+
+void print(vector<int> &a)
+{
+	for (int i = 0; i < a.size(); i++)
+	{
+		printf("%d ", a[i]);
+	}
+	printf("\n");
+}
+
 
 
 int main()
 {
-	
-	printf("\n");
+
 	return 0;
 }
