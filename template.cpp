@@ -1,3 +1,8 @@
+/******************************************************************************************
+
+******************************************************************************************/
+
+
 #include <iostream>
 #include <cstdio>
 #include <vector>
@@ -14,7 +19,7 @@ using namespace std;
 
 
 #define pii pair<int, int>
-#define mp make_pair<int, int>
+#define mp make_pair
 
 typedef long long ll;
 
@@ -40,6 +45,6 @@ void print(vector<int> &a)
 
 int main()
 {
-
+	Solution S;
 	return 0;
 }
