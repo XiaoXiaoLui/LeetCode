@@ -18,11 +18,6 @@
 using namespace std;
 
 
-#define pii pair<int, int>
-#define mp make_pair
-
-typedef long long ll;
-
 void genRandom(vector<int>& a, int n, int low, int high)
 {
 	srand(time(0));
@@ -41,7 +36,10 @@ void print(vector<int> &a)
 	printf("\n");
 }
 
+#define pii pair<int, int>
+#define mp make_pair
 
+typedef long long ll;
 
 int main()
 {
