@@ -2,18 +2,7 @@
 
 ******************************************************************************************/
 
-
-#include <iostream>
-#include <cstdio>
-#include <vector>
-#include <set>
-#include <map>
-#include <algorithm>
-#include <string>
-#include <cmath>
-#include <cstring>
-#include <queue>
-#include <ctime>
+#include<bits/stdc++.h>
 
 using namespace std;
 
