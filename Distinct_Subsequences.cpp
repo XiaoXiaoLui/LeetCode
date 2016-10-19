@@ -16,6 +16,7 @@ Distinct Subsequences
 #include <ctime>
 
 using namespace std;
+
 #define pii pair<int, int>
 #define mp make_pair
 
@@ -24,44 +25,33 @@ typedef long long ll;
 class Solution {
 public:
     int numDistinct(string s, string t) {
-		cnt1 = cnt2 = 0;
+		
 		dp.clear();
-		return solve(s, t, 0, 0);
-    }
-	
-	int solve(const string &s, const string &t, int i, int j)
-	{
+		dp.resize(t.size() + 1);
+		for (int i = 0; i < t.size(); i++)
+		{
+			dp[i].clear();
+			dp[i].insert(dp[i].begin(), s.size() + 1, 0);
+		}
+		dp[t.size()].insert(dp[t.size()].begin(), s.size() + 1, 1);
 		
-		if (j >= t.size())
+		int res = 0, i, j;
+		for (i = t.size() - 1; i >= 0; i--)
 		{
-			return 1;
-		}
-		if (t.size() - j > s.size() - i)
-		{
-			return 0;
-		}
-		cnt1++;
-		map<pii, int>::iterator iter;
-		if ((iter = dp.find(mp(i, j))) != dp.end())
-		{
-			return iter->second;
-		}
-		
-		int res = 0;
-		for (int k = i; k < s.size(); k++)
-		{
-			cnt2++;
-			if (s[k] == t[j])
+			for (j = s.size() - 1; j >= 0; j--)
 			{
-				res += solve(s, t, k + 1, j + 1);
+				dp[i][j] = dp[i][j + 1];
+				if (t[i] == s[j])
+				{
+					dp[i][j] += dp[i + 1][j + 1];
+				}
 			}
 		}
 		
-		dp[mp(i, j)] = res;
-		return res;
-	}
-	int cnt1, cnt2;
-	map<pii, int> dp;
+		return dp[0][0];
+    }
+	
+	vector<vector<int> > dp;
 };
 
 int main()
@@ -71,6 +61,6 @@ int main()
 	//string b = "aa";
 	Solution S;
 	cout << S.numDistinct(a, b) << endl;
-	cout << S.cnt1 << endl << S.cnt2 << endl;
+	//cout << S.cnt << endl;
 	return 0;
 }
