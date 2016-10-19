@@ -32,10 +32,10 @@ public:
 		int i, j, ii, jj;
         n = matrix.size();
 		m = matrix[0].size();
-		sum = new int*[n + 2];
+		sum.resize(n + 2);
 		for (i = 0; i <= n; i++)
 		{
-			sum[i] = new int[m + 2];
+			sum[i].resize(m + 2);
 		}
 		
 		
@@ -79,20 +79,12 @@ public:
 					}						
 				}
 			}
-		}
-		
-		for (i = 0; i <= n; i++)
-		{
-			delete []sum[i];
-		}
-		
-		delete []sum;
-		
+		}	
 		
 		return ans;
     }
 	
-	int **sum;
+	vector<vector<int> > sum;
 	int n, m;
 };
 

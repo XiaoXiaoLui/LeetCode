@@ -25,6 +25,41 @@ typedef long long ll;
 
 class Solution {
 public:
+    int largestRectangleArea(vector<int>& h) {
+		int res = 0, i, tmp;
+		stack<int> S;
+		
+		for (i = 0; i < h.size(); )
+		{
+			if (S.empty() || h[S.top()] <= h[i])
+			{
+				S.push(i);
+				i++;
+			}
+			else
+			{
+				tmp = S.top();
+				S.pop();
+				res = max(res, h[tmp] * (S.empty() ? i : i - S.top() - 1));
+			}
+		}
+		
+		int n = h.size();
+		while (!S.empty())
+		{
+			tmp = S.top();
+			S.pop();
+			res = max(res, h[tmp] * (S.empty() ? n : n - S.top() - 1));
+		}
+		
+		return res;
+    }
+};
+
+
+/*
+class Solution {
+public:
     int largestRectangleArea(vector<int>& heights) {
 		vector<int> left(heights.size());
 		vector<int> right(heights.size());
@@ -76,7 +111,7 @@ public:
 		
 		return res;
     }
-};
+};*/
 
 int main()
 {
